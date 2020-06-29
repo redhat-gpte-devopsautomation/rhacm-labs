@@ -3,7 +3,7 @@ kind: Route
 metadata:
   labels:
     app: etherpad
-  name: etherpad
+  name: etherpad-route
 spec:
   tls:
     insecureEdgeTerminationPolicy: Redirect
