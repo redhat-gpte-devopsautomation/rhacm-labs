@@ -5,7 +5,8 @@ metadata:
 spec:
   replicas: 1
   selector:
-    name: postgresql
+    matchLabels:
+      name: postgresql
   strategy:
     type: Recreate
   template:
