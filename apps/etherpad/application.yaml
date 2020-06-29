@@ -33,7 +33,7 @@ metadata:
   labels:
     app: etherpad-app
   annotations:
-      apps.open-cluster-management.io/github-path: resources/etherpad
+    apps.open-cluster-management.io/github-path: resources/etherpad
 spec:
   channel: etherpad/etherpad-app-latest
   placement:
