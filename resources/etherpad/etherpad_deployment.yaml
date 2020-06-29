@@ -27,7 +27,7 @@ spec:
         - name: DB_HOST
           value: postgresql
         - name: DB_PORT
-          value: 5432
+          value: "5432"
         - name: DB_DATABASE
           value: ether
         - name: DB_USER
