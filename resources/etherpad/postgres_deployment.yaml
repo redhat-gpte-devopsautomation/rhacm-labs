@@ -1,10 +1,6 @@
-apiVersion: apps.openshift.io/v1
-kind: DeploymentConfig
+apiVersion: apps/v1
+kind: Deployment
 metadata:
-  annotations:
-    template.alpha.openshift.io/wait-for-ready: "true"
-  labels:
-    template: postgresql-persistent-template
   name: postgresql
 spec:
   replicas: 1
@@ -24,17 +20,17 @@ spec:
           valueFrom:
             secretKeyRef:
               key: database-user
-              name: postgresql
+              name: ether
         - name: POSTGRESQL_PASSWORD
           valueFrom:
             secretKeyRef:
               key: database-password
-              name: postgresql
+              name: ether
         - name: POSTGRESQL_DATABASE
           valueFrom:
             secretKeyRef:
               key: database-name
-              name: postgresql
+              name: ether
         image: ' '
         imagePullPolicy: IfNotPresent
         livenessProbe:
@@ -70,16 +66,3 @@ spec:
       - name: postgresql-data
         persistentVolumeClaim:
           claimName: postgresql
-  triggers:
-  - imageChangeParams:
-      automatic: true
-      containerNames:
-      - postgresql
-      from:
-        kind: ImageStreamTag
-        name: postgresql:10
-        namespace: openshift
-      lastTriggeredImage: ""
-    type: ImageChange
-  - type: ConfigChange
-status: {}
