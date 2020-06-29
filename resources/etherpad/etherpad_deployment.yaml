@@ -1,5 +1,5 @@
-apiVersion: apps.openshift.io/v1
-kind: DeploymentConfig
+apiVersion: v1
+kind: Deployment
 metadata:
   labels:
     app: etherpad
@@ -7,23 +7,17 @@ metadata:
 spec:
   replicas: 1
   selector:
-    app: etherpad
-    deploymentconfig: etherpad
+    matchLabels:
+      app: etherpad
   strategy:
-    activeDeadlineSeconds: 21600
-    resources: {}
-    rollingParams:
-      intervalSeconds: 1
+    rollingUpdate:
       maxSurge: 25%
       maxUnavailable: 25%
-      timeoutSeconds: 600
-      updatePeriodSeconds: 1
-    type: Rolling
+    type: RollingUpdate
   template:
     metadata:
       labels:
         app: etherpad
-        deploymentconfig: etherpad
     spec:
       containers:
       - env:
