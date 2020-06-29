@@ -10,3 +10,5 @@ spec:
     termination: edge
   to:
     name: etherpad
+  port:
+    targetPort: 9001
