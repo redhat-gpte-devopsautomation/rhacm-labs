@@ -1,15 +1,15 @@
-- apiVersion: v1
-  kind: Service
-  metadata:
-    labels:
-      app: etherpad
-    name: etherpad
-  spec:
-    ports:
-    - name: etherpad
-      port: 9001
-      protocol: TCP
-      targetPort: 9001
-    selector:
-      app: etherpad
-      deploymentconfig: etherpad
+apiVersion: v1
+kind: Service
+metadata:
+  labels:
+    app: etherpad
+  name: etherpad
+spec:
+  ports:
+  - name: etherpad
+    port: 9001
+    protocol: TCP
+    targetPort: 9001
+  selector:
+    app: etherpad
+    deploymentconfig: etherpad
