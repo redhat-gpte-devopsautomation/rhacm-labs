@@ -6,7 +6,7 @@ metadata:
   namespace: etherpad
 spec:
   type: GitHub
-  pathname: https://github.com/redhat-gpte-devopsautomation/acm-labs.git
+  pathname: https://github.com/redhat-gpte-devopsautomation/rhacm-labs.git
 ---
 apiVersion: app.k8s.io/v1beta1
 kind: Application
