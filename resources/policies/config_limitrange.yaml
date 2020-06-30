@@ -2,13 +2,13 @@ apiVersion: policy.mcm.ibm.com/v1alpha1
 kind: Policy
 metadata:
   name: policy-configuration
-  namespace: mcm 
+  namespace: rhacm-policies 
 spec:
   complianceType: musthave
   remediationAction: inform
   namespaces:
-    exclude: ["kube-*,openshift-*"]
-    include: ["*"]
+    exclude: ["kube-*, openshift-*", "default", "open-cluster-manager"]
+    include: []
   object-templates:
     - complianceType: musthave
       objectDefinition:
@@ -32,11 +32,3 @@ spec:
             max:
               cpu: 4
               memory: 8Gi
-            
-
-
-
-
-
-
-
