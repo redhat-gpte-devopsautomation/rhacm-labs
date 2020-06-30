@@ -1,0 +1,42 @@
+apiVersion: policy.mcm.ibm.com/v1alpha1
+kind: Policy
+metadata:
+  name: policy-configuration
+  namespace: mcm 
+spec:
+  complianceType: musthave
+  remediationAction: inform
+  namespaces:
+    exclude: ["kube-*,openshift-*"]
+    include: ["*"]
+  object-templates:
+    - complianceType: musthave
+      objectDefinition:
+        apiVersion: v1
+        kind: LimitRange
+        metadata:
+          name: default-limit-range
+        spec:
+          limits:
+          - type: Container
+            default:
+              cpu: 500m
+              memory: 512Mi
+            defaultRequest:
+              cpu: 50m
+              memory: 256Mi
+            max:
+              cpu: 2
+              memory: 4Gi
+          - type: Pod
+            max:
+              cpu: 4
+              memory: 8Gi
+            
+
+
+
+
+
+
+
