@@ -1,0 +1,37 @@
+apiVersion: policy.mcm.ibm.com/v1alpha1
+kind: Policy
+metadata:
+  name: policy-iam
+  namespace: rhacm-policies
+spec:
+  complianceType: musthave
+  remediationAction: inform
+  disabled: false
+  namespaces: {}
+  policy-templates:
+    - objectDefinition:
+        apiVersion: iam.policies.ibm.com/v1alpha1
+        kind: IamPolicy
+        metadata:
+          name: policy-clusteradmin
+        spec:
+          severity: medium
+          namespaceSelector:
+            include: ["*"]
+            exclude: ["kube-*", "openshift-*"]
+          remediationAction: inform
+          maxClusterRoleBindingUsers: 3
+---
+apiVersion: mcm.ibm.com/v1alpha1
+kind: PlacementBinding
+metadata:
+  name: binding-policy-iam
+  namespace: rhacm-policies
+placementRef:
+  name: dev-clusters
+  kind: PlacementRule
+  apiGroup: apps.open-cluster-management.io
+subjects:
+- name: policy-iam
+  kind: Policy
+  apiGroup: policy.mcm.ibm.com
