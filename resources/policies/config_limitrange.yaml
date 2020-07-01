@@ -5,7 +5,7 @@ metadata:
   namespace: rhacm-policies 
 spec:
   complianceType: musthave
-  remediationAction: inform
+  remediationAction: enforce
   namespaces:
     exclude: ["kube-*, openshift-*", "default", "open-cluster-manager"]
     include: []

@@ -1,7 +1,7 @@
 apiVersion: mcm.ibm.com/v1alpha1
 kind: PlacementBinding
 metadata:
-  name: binding-policy-grc
+  name: config-placement-binding
   namespace: rhacm-policies
 placementRef:
   name: dev-clusters
