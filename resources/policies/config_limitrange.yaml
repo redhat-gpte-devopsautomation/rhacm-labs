@@ -17,6 +17,8 @@ spec:
     - '*'
   object-templates:
     - complianceType: musthave
+      namespaces:
+        exclude:
       objectDefinition:
         apiVersion: v1
         kind: LimitRange
