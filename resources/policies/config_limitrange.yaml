@@ -7,8 +7,14 @@ spec:
   complianceType: musthave
   remediationAction: enforce
   namespaces:
-    exclude: ["kube-*, openshift-*", "openshift", "default", "open-cluster-manager"]
-    include: ["*"]
+    exclude:
+    - kube-*
+    - openshift-*
+    - openshift
+    - default
+    - multicluster-endpoint
+    include:
+    - '*'
   object-templates:
     - complianceType: musthave
       objectDefinition:
