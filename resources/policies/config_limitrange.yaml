@@ -8,7 +8,7 @@ spec:
   remediationAction: enforce
   namespaces:
     exclude: ["kube-*, openshift-*", "openshift", "default", "open-cluster-manager"]
-    include: []
+    include: [*]
   object-templates:
     - complianceType: musthave
       objectDefinition:
