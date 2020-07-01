@@ -6,11 +6,7 @@ metadata:
 spec:
   complianceType: musthave
   disabled: false
-  namespaces:
-    exclude:
-    - kube-*
-    include:
-    - default
+  namespaces: {}
   policy-templates:
   - objectDefinition:
       apiVersion: policies.ibm.com/v1alpha1
