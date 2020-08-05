@@ -5,7 +5,8 @@ metadata:
   namespace: rhacm-policies
 spec:
   clusterConditions:
-  - type: OK
+  - type: ManagedClusterConditionAvailable
+    status: "True"
   clusterSelector:
     matchExpressions:
       - key: environment

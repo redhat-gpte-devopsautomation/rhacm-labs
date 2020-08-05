@@ -1,26 +1,25 @@
-apiVersion: policy.mcm.ibm.com/v1alpha1
+apiVersion: policy.open-cluster-management.io/v1
 kind: Policy
 metadata:
-  name: policy-iam
+  name: policy-limitclusteradmin
   namespace: rhacm-policies
 spec:
   complianceType: musthave
   remediationAction: inform
   disabled: false
-  namespaces: {}
   policy-templates:
     - objectDefinition:
-        apiVersion: iam.policies.ibm.com/v1alpha1
+        apiVersion: policy.open-cluster-management.io/v1
         kind: IamPolicy
         metadata:
-          name: policy-clusteradmin
+          name: policy-limitclusteradmin-example
         spec:
           severity: medium
           namespaceSelector: {}
           remediationAction: inform
-          maxClusterRoleBindingUsers: 3
+          maxClusterRoleBindingUsers: 5
 ---
-apiVersion: mcm.ibm.com/v1alpha1
+apiVersion: policy.open-cluster-management.io/v1
 kind: PlacementBinding
 metadata:
   name: binding-policy-iam
@@ -32,4 +31,4 @@ placementRef:
 subjects:
 - name: policy-iam
   kind: Policy
-  apiGroup: policy.mcm.ibm.com
+  apiGroup: policy.open-cluster-management.io

@@ -1,31 +1,28 @@
-apiVersion: policy.mcm.ibm.com/v1alpha1
+---
+apiVersion: policy.open-cluster-management.io/v1
 kind: Policy
 metadata:
   name: policy-certificate
   namespace: rhacm-policies
 spec:
-  complianceType: musthave
-  disabled: false
-  namespaces: {}
-  policy-templates:
-  - objectDefinition:
-      apiVersion: policies.ibm.com/v1alpha1
-      kind: CertificatePolicy
-      metadata:
-        name: policy-certificatepolicy-example
-      spec:
-        minimumDuration: 2200h
-        namespaceSelector:
-          exclude: []
-          include:
-          - openshift-ingress
-        remediationAction: inform
-        severity: low
-    status:
-      Validity: {}
   remediationAction: inform
+  disabled: false
+  policy-templates:
+    - objectDefinition:
+        apiVersion: policy.open-cluster-management.io/v1
+        kind: CertificatePolicy
+        metadata:
+          name: policy-certificate-example
+        spec:
+          namespaceSelector:
+            include:
+            - openshift-ingress
+            exclude: []
+          remediationAction: inform
+          severity: low
+          minimumDuration: 2200h
 ---
-apiVersion: mcm.ibm.com/v1alpha1
+apiVersion: policy.open-cluster-management.io/v1
 kind: PlacementBinding
 metadata:
   name: certificate-placement-binding
@@ -37,4 +34,4 @@ placementRef:
 subjects:
 - name: policy-certificate
   kind: Policy
-  apiGroup: policy.mcm.ibm.com
+  apiGroup: policy.open-cluster-management.io
