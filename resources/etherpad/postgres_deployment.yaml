@@ -14,6 +14,8 @@ spec:
       labels:
         name: postgresql
     spec:
+      imagePullSecrets:
+      - name: regcred
       containers:
       - capabilities: {}
         env:
