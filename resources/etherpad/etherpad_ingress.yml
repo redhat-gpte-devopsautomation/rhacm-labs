@@ -1,0 +1,12 @@
+apiVersion: extensions/v1beta1
+kind: Ingress
+metadata:
+  name: etherpad-ingress
+  namespace: etherpad
+spec:
+  rules:
+  - http:
+      paths:
+      - backend:
+          serviceName: etherpad
+          servicePort: 9001
